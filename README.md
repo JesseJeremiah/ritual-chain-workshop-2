@@ -102,6 +102,37 @@ ERC-20, a centralized resolver, or an upgrade proxy. Staking uses the chain's na
 betting model is plain pari-mutuel: two running totals and one mapping per side.
 
 ## Reference
+## Workshop Retrospective
+
+This workshop was more useful to me once I stopped looking at it as just a
+prediction market contract.
+
+The interesting part is the complete flow around the contract.
+
+The Scheduler handles when the resolution should be attempted.
+
+The executor handles the external operation.
+
+The HTTP and jq components provide the external data.
+
+The contract still applies the final market rules.
+
+One thing I would like to explore next is how these pieces behave when the
+external data source is unreliable.
+
+I think failure handling is actually more interesting than the happy path.
+
+My next step would be to build more edge-case tests and a small interface for
+watching the resolution process.
+
+I would also like to experiment with different oracle response formats.
+
+For now, the biggest thing I took away from the workshop is that an
+autonomous contract is not necessarily a contract that does everything by
+itself.
+
+It is a contract that can coordinate with the surrounding infrastructure
+while keeping the important state and rules on-chain.
 
 - Ritual Chain docs — <https://docs.ritualfoundation.org>
 - dApp skills — <https://github.com/ritual-foundation/ritual-dapp-skills>
